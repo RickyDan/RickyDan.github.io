@@ -5,7 +5,7 @@ header-img: img/post-bg-desk.jpg
 email: tangzhiming90@gmail.com
 description: "Every failure is leading towards success."
 keyword: "Rick Rick的博客 前端 Node Vue React 全家桶"
-url: "https: //rickdan.github.io"          # your host, for absolute URL
+url: "http: //rickdan.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/RickyDan/rickdan.github.io.git" # you code repository
 
