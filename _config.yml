@@ -18,7 +18,7 @@ sidebar-avatar: /img/right-side-logo.jpg      # use absolute URL, seeing it's us
 
 # SNS settings
 RSS: false
-zhihu_username: tangzhiming
+zhihu_username: tang-zhi-ming-9
 github_username:    rickydan
 
 
@@ -99,12 +99,15 @@ friends: [
         href: "https://cn.vuejs.org"
     },{
         title: "React",
-        href: "React"
-    },{
-        title: "Apple",
         href: "https://reactjs.org"
     },{
-        title: "Apple Developer",
-        href: "https://developer.apple.com/"
+        title: "Typescript",
+        href: "https://typescriptlang.org"
+    },{
+        title: "Nodejs",
+        href: "https://nodejs.org"
+    },{
+        title: "Web Developer",
+        href: "https://developer.mozilla.org"
     }
 ]
