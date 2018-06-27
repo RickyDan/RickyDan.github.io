@@ -143,7 +143,7 @@ import { Component } from 'vue-class-component'
 export default class HelloWorld extends Vue {}
 ```
 
-4. *.vue 文件中的script 标签必须写成 <script lang="ts"></script>, 否则 webpack会把脚本默认当成 js
+4. *.vue 文件中的script 标签必须加上 lang="ts" 属性, 否则 webpack会把脚本默认当成 js
 
 5. 在 template 调用自定义的函数类型时，typescript 无法检测到传入的参数类型是否符合要求, 解决办法一是把vue
 组件使用tsx的方法写，但是这种写法对于习惯Vue常规写法的人来说变化太大，而且Vue自身内置的一些v-for、v-model指
