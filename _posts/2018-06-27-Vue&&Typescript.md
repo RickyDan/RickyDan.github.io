@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Vue全家桶和Typescript搭档开发大型Web应用
+title: Vue全家桶搭档Typescript
 subtitle: Typescript && Vue
 date: 2018-06-26
 author: Rick
