@@ -5,7 +5,7 @@ subtitle: cookie && session
 date: 2018-06-27
 author: Rick
 catalog: true
-header-img: img/promise.png
+header-img: img/cookie.jpg
 tags:
   -cookie session
 ---
