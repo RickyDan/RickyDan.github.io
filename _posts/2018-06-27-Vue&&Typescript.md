@@ -134,13 +134,13 @@ import HelloWorld from '@/components/Helloworld'
 3. 无法推断 Vue 实例内部属性类型
 在js开发时, this.$router 这样的代码在 ts 下会报错说属性不存在，解决的办法时是引入新的包 vue-class-component,
 这是Vue官方推出的配合Typescript而写的npm包，定义组件时使用下面这种写法
+
 ```ts
 import Vue from 'vue'
 import { Component } from 'vue-class-component'
 
 @Component({})
 export default class HelloWorld extends Vue {}
-
 ```
 
 4. *.vue 文件中的script 标签必须写成 <script lang="ts"></script>, 否则 webpack会把脚本默认当成 js
@@ -152,6 +152,7 @@ export default class HelloWorld extends Vue {}
 6. 某些第三方库无法被typescript识别到，有些npm包默认都是基于javascript编写的，所以在ts中引用时会因为无法识别
 而报错，解决办法是在src目录下创建一个typing目录，里面存放vue-shims.d.ts和global.d.ts两个文件，global.d.ts
 文件如下
+
 ```ts
 declare module 'element-ui'
 declare module 'vue-lazyload'
