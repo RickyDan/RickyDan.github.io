@@ -24,7 +24,6 @@ npm install --save-dev typescript ts-loader tslint tslint-config-standard tslint
 ```
 第三步 在根目录下创建tsconfig.json的配置文件, 配置如下
 ```json
-
 {
   "include": [
     "src/*",
@@ -145,9 +144,9 @@ export default class HelloWorld extends Vue {}
 
 4. *.vue 文件中的script 标签必须加上 lang="ts" 属性, 否则 webpack会把脚本默认当成 js
 
-5. 在 template 调用自定义的函数类型时，typescript 无法检测到传入的参数类型是否符合要求, 解决办法一是把vue
+5. 在 template 调用自定义的函数类型时，typescript 无法检测到传入的参数类型是否符合要求, 解决办法是把vue
 组件使用tsx的方法写，但是这种写法对于习惯Vue常规写法的人来说变化太大，而且Vue自身内置的一些v-for、v-model指
-令无法在tsx中识别。另外一种就是将业务逻辑抽离出来放到 Vuex 的 action 中，后面我会详细介绍这种写法
+令无法在tsx中识别
 
 6. 某些第三方库无法被typescript识别到，有些npm包默认都是基于javascript编写的，所以在ts中引用时会因为无法识别
 而报错，解决办法是在src目录下创建一个typing目录，里面存放vue-shims.d.ts和global.d.ts两个文件，global.d.ts
@@ -158,3 +157,36 @@ declare module 'element-ui'
 declare module 'vue-lazyload'
 declare module 'vue-ueditor'
 ```
+
+### 为什么使用Typescript
+在前后端分离的趋势下，后端一般只负责提供接口数据给前端，由前端自行决定将数据怎么渲染出来。这个过程中，前后台的通信都是通过各种各样的数据
+和状态进行的，假如前端需要的是一个数字类型，后台却返回了一个字符串类型，这种因为数据类型不一致而遗留下的定时炸弹，往往不知道什么时候就暴
+露出来。在测试阶段去找到这些问题的难度系数和花费的时间远远比在开发阶段就避开这些问题难得多。而Typescript自带的强类型可以帮助我们在开发
+阶段去避免这些问题的困扰。有关Typescript的一些入门知识我会单独写一篇文章介绍，这里就不细说了。
+
+### Typescript如何写Vue组件
+typescript的写法和js的写法区别比较大, 话不多说上代码
+
+```ts
+import { Vue, Component } from 'vue-property-decorator'
+
+@Component({})
+export default class Order extends Vue {
+  created () {
+  }
+  
+  id: number = 0
+  params = {
+    page: 10,
+    currentPage: 1
+  }
+
+  getId (num: number):number {
+    return this.id
+  }
+}
+```
+首先ts的写法是声明一个class, 而不是js那样声明一个object, 其次这个类必须继承Vue这个基类，同时使用@Component({})这个装饰器去修饰这个类，
+@Component()接受一个对象作为参数，对象的属性是Vue组件的选项，比如props, mixins这些, 而Vue内置的一些钩子函数和自定义的普通函数都是作为
+类的普通方法，属性的声明也不需要放到data选项中，直接声明为一个类的实例属性即可。属性声明时可以同时声明该属性的类型，也可以不声明，由ts自行
+推断。更加完整的用例和写法请直接看源码<https://github.com/rickydan/vue-ts-demo>
